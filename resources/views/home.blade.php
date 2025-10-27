@@ -138,7 +138,7 @@
       </a>
 
       <nav aria-label="Main navigation">
-        <a class="nav-link" href="/about">about</a>
+        <a class="nav-link" href="{{ route("about") }}">about</a>
         <a class="nav-link" href="#sleep">Sleep</a>
         <a class="nav-link" href="#courses">Courses</a>
         <a class="btn btn-ghost" href="#login">Sign in</a>
