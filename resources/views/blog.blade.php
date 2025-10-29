@@ -140,6 +140,7 @@
     <img src="{{ $data["featured_image"] }}" alt="Featured Image" class="featured-image">
 
     <div class="meta">
+        <a href="{{ route("home") }}">back to home</a>
       <p><strong>Category:</strong> {{ $data["category"] }}</p>
       <p><strong>Published on:</strong> October 28, 2025 • <strong>8 min read</strong></p>
 
