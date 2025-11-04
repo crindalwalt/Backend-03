@@ -16,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Blog::factory(30)->create();
+
+
+        $this->call([
+            BookSeeder::class,
+            BlogSeeder::class
+        ]);
     }
 }
