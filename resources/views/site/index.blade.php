@@ -542,7 +542,7 @@
                             <p>
                                 {{ $item->description }}
                             </p>
-                            <a href="show.blade.php" class="read-more">Read More</a>
+                            <a href="{{ route("blog.detail",$item->slug) }}" class="read-more">Read More</a>
                         </div>
                     </article>
                 @endforeach

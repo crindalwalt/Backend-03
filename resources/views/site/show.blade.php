@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -267,7 +268,8 @@
             margin: 2.5rem 0 1rem;
         }
 
-        .article-content ul, .article-content ol {
+        .article-content ul,
+        .article-content ol {
             margin: 1.5rem 0 1.5rem 2rem;
             line-height: 2;
         }
@@ -517,6 +519,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -565,6 +568,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header id="header">
@@ -583,140 +587,47 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="index.blade.php">Home</a>
+        <a href="{{ route('home') }}">Home</a>
         <span>/</span>
-        <a href="index.blade.php#blogs">Blogs</a>
+        <a href="{{ route('home') }}">Blogs</a>
         <span>/</span>
-        <span>Understanding Anxiety</span>
+        <span>{{ $blog->title }}</span>
     </div>
 
     <!-- Article Header -->
     <article class="article-header">
-        <span class="article-category">Mental Health</span>
-        <h1>Understanding Anxiety: A Beginner's Guide</h1>
+        <span class="article-category">{{ $blog->category }}</span>
+        <h1>{{ $blog->title }}</h1>
         <div class="article-meta">
-            <span>📅 October 28, 2025</span>
-            <span>⏱️ 5 min read</span>
-            <span>👁️ 2,543 views</span>
+            <span>📅 {{ $blog->created_at->diffForHumans() }}</span>
+            <span>⏱️ {{ $blog->read_time }} min read</span>
+            <span>👁️ {{ $blog->views }} views</span>
         </div>
         <div class="author-info">
-            <div class="author-avatar">👩‍⚕️</div>
+            <div class="author-avatar">
+                <img src="{{ $blog->author_image }}" alt=""
+                    style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <div class="author-details">
-                <h3>Dr. Sarah Mitchell</h3>
-                <p>Clinical Psychologist & Wellness Coach</p>
+                <h3>{{ $blog->author_name }}</h3>
+                <p>{{ $blog->author_excerpt }}</p>
             </div>
         </div>
     </article>
 
     <!-- Featured Image -->
     <div class="featured-image">
-        <div class="featured-image-container">🌱</div>
+        <div class="featured-image-container"><img src="{{ $blog->featured_image }}"
+                style="width: 100%; height: 100%; object-fit: cover;" alt=""></div>
     </div>
 
     <!-- Article Content -->
     <section class="article-content">
         <p>
-            Anxiety is one of the most common mental health challenges people face today. Whether it's the butterflies before a presentation, worry about an upcoming event, or a persistent feeling of unease, anxiety touches all of our lives at some point. Understanding what anxiety is and how it works is the first step toward managing it effectively.
+            {{ $blog->description }}
         </p>
-
-        <h2>What Is Anxiety?</h2>
         <p>
-            Anxiety is your body's natural response to stress. It's a feeling of fear or apprehension about what's to come. While some anxiety is normal and can even be helpful—motivating you to prepare for challenges—chronic anxiety can interfere with daily life and wellbeing.
-        </p>
-
-        <p>
-            The physical symptoms of anxiety can include increased heart rate, rapid breathing, sweating, and feeling tense or restless. Mentally, you might experience racing thoughts, difficulty concentrating, or persistent worry. It's important to recognize that these feelings are your body's way of trying to protect you, even when there isn't an immediate threat.
-        </p>
-
-        <h2>Common Types of Anxiety</h2>
-        <p>
-            Anxiety disorders come in many forms, and understanding the different types can help you identify what you're experiencing:
-        </p>
-
-        <ul>
-            <li><strong>Generalized Anxiety Disorder (GAD):</strong> Persistent and excessive worry about various aspects of daily life</li>
-            <li><strong>Social Anxiety Disorder:</strong> Intense fear of social situations and being judged by others</li>
-            <li><strong>Panic Disorder:</strong> Recurring panic attacks and fear of having more attacks</li>
-            <li><strong>Specific Phobias:</strong> Intense fear of particular objects or situations</li>
-        </ul>
-
-        <blockquote>
-            "Anxiety is not something you have to face alone. With the right tools and support, you can learn to manage your symptoms and reclaim your peace of mind."
-        </blockquote>
-
-        <h2>Practical Techniques for Managing Anxiety</h2>
-
-        <h3>1. Deep Breathing Exercises</h3>
-        <p>
-            One of the most effective immediate anxiety relief techniques is controlled breathing. When you're anxious, your breathing becomes shallow and rapid. By consciously slowing and deepening your breath, you can activate your body's relaxation response.
-        </p>
-
-        <div class="highlight-box">
-            <h4>Try This: 4-7-8 Breathing Technique</h4>
-            <ul>
-                <li>Breathe in through your nose for 4 counts</li>
-                <li>Hold your breath for 7 counts</li>
-                <li>Exhale completely through your mouth for 8 counts</li>
-                <li>Repeat this cycle 3-4 times</li>
-            </ul>
-        </div>
-
-        <h3>2. Mindfulness and Grounding</h3>
-        <p>
-            Mindfulness involves bringing your attention to the present moment without judgment. When anxiety pulls your thoughts toward worst-case scenarios, grounding techniques can help anchor you to the here and now.
-        </p>
-
-        <p>
-            A popular grounding exercise is the "5-4-3-2-1" technique: Identify 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste. This simple practice engages your senses and redirects your focus away from anxious thoughts.
-        </p>
-
-        <h3>3. Regular Physical Activity</h3>
-        <p>
-            Exercise is a powerful anxiety reducer. Physical activity releases endorphins, improves sleep, and provides a healthy outlet for nervous energy. You don't need to run marathons—even a 20-minute walk can make a significant difference in your anxiety levels.
-        </p>
-
-        <h3>4. Challenge Your Thoughts</h3>
-        <p>
-            Anxiety often stems from catastrophic thinking patterns. Learning to identify and challenge these thoughts is a key component of cognitive-behavioral therapy (CBT). Ask yourself: "What evidence do I have for this thought? Is there another way to look at this situation? What would I tell a friend who had this thought?"
-        </p>
-
-        <h2>Building Long-Term Resilience</h2>
-        <p>
-            While immediate coping strategies are valuable, building long-term resilience against anxiety involves lifestyle changes and consistent self-care practices:
-        </p>
-
-        <ul>
-            <li><strong>Maintain a consistent sleep schedule:</strong> Quality sleep is crucial for emotional regulation</li>
-            <li><strong>Limit caffeine and alcohol:</strong> Both can exacerbate anxiety symptoms</li>
-            <li><strong>Connect with others:</strong> Social support is a powerful buffer against anxiety</li>
-            <li><strong>Practice self-compassion:</strong> Be kind to yourself when anxiety strikes</li>
-            <li><strong>Set boundaries:</strong> Learn to say no and protect your energy</li>
-        </ul>
-
-        <h2>When to Seek Professional Help</h2>
-        <p>
-            While self-help strategies are valuable, professional support is sometimes necessary. Consider reaching out to a mental health professional if:
-        </p>
-
-        <ul>
-            <li>Your anxiety is interfering with work, relationships, or daily activities</li>
-            <li>You're experiencing panic attacks</li>
-            <li>You're avoiding situations due to anxiety</li>
-            <li>You're using substances to cope with anxiety</li>
-            <li>Your symptoms have persisted for several months</li>
-        </ul>
-
-        <p>
-            Remember, seeking help is a sign of strength, not weakness. Therapists can provide evidence-based treatments like cognitive-behavioral therapy, exposure therapy, and other techniques tailored to your specific needs.
-        </p>
-
-        <h2>Moving Forward with Hope</h2>
-        <p>
-            Understanding anxiety is the first step toward managing it effectively. By recognizing your symptoms, practicing coping strategies, and building healthy habits, you can reduce anxiety's impact on your life. Recovery isn't linear—there will be good days and challenging days—but with patience, persistence, and the right support, you can cultivate greater peace and wellbeing.
-        </p>
-
-        <p>
-            You deserve to feel calm, confident, and in control. Start with one small step today, whether it's trying a breathing exercise, going for a walk, or reaching out to a supportive friend. Your journey toward managing anxiety begins now, and every step forward is worth celebrating.
+            {{ $blog->body }}
         </p>
     </section>
 
@@ -735,32 +646,23 @@
     <section class="related-section">
         <h2>You Might Also Like</h2>
         <div class="related-grid">
-            <article class="related-card" onclick="window.location.href='show.blade.php'">
-                <div class="related-image">🧘</div>
-                <div class="related-content">
-                    <h3>Mindfulness Meditation for Better Sleep</h3>
-                    <p>Discover how mindfulness meditation can transform your nighttime routine...</p>
-                    <a href="show.blade.php" class="read-more">Read More →</a>
-                </div>
-            </article>
 
-            <article class="related-card" onclick="window.location.href='show.blade.php'">
-                <div class="related-image">💪</div>
-                <div class="related-content">
-                    <h3>Building Resilience in Challenging Times</h3>
-                    <p>Learn practical strategies to cultivate resilience and maintain wellbeing...</p>
-                    <a href="show.blade.php" class="read-more">Read More →</a>
-                </div>
-            </article>
+            @if ($similarBlogs->isNotEmpty())
+                @foreach ($similarBlogs as $item)
+                    <article class="related-card" onclick="window.location.href='show.blade.php'">
+                        <div class="related-image">🧘</div>
+                        <div class="related-content">
+                            <h3>{{  $item->title }}</h3>
+                            <p>{{ $item->description }}</p>
+                            <a href="{{ route("blog.detail",$item->id) }}" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                @endforeach
 
-            <article class="related-card" onclick="window.location.href='show.blade.php'">
-                <div class="related-image">❤️</div>
-                <div class="related-content">
-                    <h3>The Power of Self-Compassion</h3>
-                    <p>Discover how self-compassion can improve your emotional wellbeing...</p>
-                    <a href="show.blade.php" class="read-more">Read More →</a>
-                </div>
-            </article>
+
+            @endif
+
+
         </div>
     </section>
 
@@ -769,7 +671,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About MindfulPath</h3>
-                <p>We're dedicated to providing accessible, evidence-based mental health resources to support your journey toward wellbeing and personal growth.</p>
+                <p>We're dedicated to providing accessible, evidence-based mental health resources to support your
+                    journey toward wellbeing and personal growth.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook">📘</a>
                     <a href="#" aria-label="Twitter">🐦</a>
@@ -811,7 +714,9 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 MindfulPath. All rights reserved. | <a href="#" style="color: var(--primary-orange); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--primary-orange); text-decoration: none;">Terms of Service</a></p>
+            <p>&copy; 2025 MindfulPath. All rights reserved. | <a href="#"
+                    style="color: var(--primary-orange); text-decoration: none;">Privacy Policy</a> | <a href="#"
+                    style="color: var(--primary-orange); text-decoration: none;">Terms of Service</a></p>
         </div>
     </footer>
 
@@ -834,7 +739,7 @@
 
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -855,7 +760,7 @@
                 const title = document.querySelector('h1').textContent;
 
                 let shareUrl;
-                switch(platform) {
+                switch (platform) {
                     case 'facebook':
                         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
                         break;
@@ -888,4 +793,5 @@
         });
     </script>
 </body>
+
 </html>

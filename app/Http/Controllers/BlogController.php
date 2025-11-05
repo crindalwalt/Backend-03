@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use PhpParser\Node\Expr\BinaryOp\Equal;
 
 class BlogController
 {
@@ -39,9 +40,17 @@ class BlogController
     /**
      * Display the specified resource.
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
-        return view("site.show");
+        // find blog with this id
+        $blog = Blog::where("slug","=",$id,)->first();
+        $similarBlogs = Blog::limit(3)->get();
+        // dd($similarBlogs);
+
+        return view("site.show",[
+            "blog" => $blog,
+            "similarBlogs" => $similarBlogs,
+        ]);
     }
 
     /**

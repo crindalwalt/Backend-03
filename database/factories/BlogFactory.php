@@ -34,6 +34,7 @@ class BlogFactory extends Factory
 
         return [
             'title' => $this->faker->sentence(4),
+            'slug' => $this->faker->slug,
             'description' => $this->faker->paragraph(4),
             'read_time' => $this->faker->numberBetween(5, 20),
             'views' => $this->faker->numberBetween(1000, 5000),
