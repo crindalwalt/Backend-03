@@ -40,12 +40,13 @@ class BlogController
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        // find blog with this id
-        $blog = Blog::where("slug","=",$id,)->first();
+
+
+        // $blogpost = Blog::where("slug","=" ,$blog)->first();
+        //  $blogpost = Blog::find($blog);
         $similarBlogs = Blog::limit(3)->get();
-        // dd($similarBlogs);
 
         return view("site.show",[
             "blog" => $blog,
@@ -75,5 +76,10 @@ class BlogController
     public function destroy(Blog $blog)
     {
         //
+    }
+
+
+    public function contact(){
+        return "contact page";
     }
 }

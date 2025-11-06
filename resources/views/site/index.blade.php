@@ -529,7 +529,8 @@
             @if ($blogs->isNotEmpty())
                 @foreach ($blogs as $item)
                     <!-- Blog Card 1 -->
-                    <article class="blog-card loading" onclick="window.location.href='show.blade.php'">
+
+                    <article class="blog-card loading" >
                         <div class="blog-image">
                             <img src="{{ $item->featured_image }}" alt="">
                         </div>
@@ -538,7 +539,9 @@
                                 <span>📅 {{ $item->created_at->diffForHumans() }}</span>
                                 <span>⏱️ {{ $item->read_time }} min read</span>
                             </div>
-                            <h3>{{ $item->title }}</h3>
+                            <h3>
+                                {{ $item->title }}
+                            </h3>
                             <p>
                                 {{ $item->description }}
                             </p>
